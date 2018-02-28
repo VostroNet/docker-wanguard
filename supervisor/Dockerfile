@@ -4,7 +4,7 @@ RUN yum update -y && \
   && yum install -y WANsensor WANfilter \
   && yum clean all && rm -rf /var/cache/yum
 
-VOLUME [ "/opt/andrisoft/dumps/", "/opt/andrisoft/flows/"]
+VOLUME ["/opt/andrisoft/etc/", "/opt/andrisoft/dumps/", "/opt/andrisoft/flows/"]
 
 COPY startup.sh /startup.sh
 RUN chmod +x /startup.sh

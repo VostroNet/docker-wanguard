@@ -14,7 +14,8 @@ docker rm wanguard-console wanguard-supervisor
 
 # docker run -d --name wanguard-mariadb \
 #   -e MYSQL_ROOT_PASSWORD=my-secret-pw \
-#   mariadb:latest
+#   -v "$(pwd)/db:/var/lib/mysql" \
+#   mariadb:latest --max-allowed-packet=64M --max-connections=1000 --open-files-limit=5000 --skip-name-resolve
 
 docker run -d --name wanguard-console \
   --link wanguard-mariadb:mariadb \
@@ -24,7 +25,7 @@ docker run -d --name wanguard-console \
   -e TZ=Australia/Brisbane \
   wanguard-console
 
-# docker exec -it wanguard-console /install.sh
+docker exec -it wanguard-console /install.sh
 
 docker restart wanguard-console
 docker run -d --name wanguard-supervisor \

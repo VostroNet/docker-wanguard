@@ -8,7 +8,7 @@ RUN rpm -Uvh https://www.andrisoft.com/files/redhat7/WANrepo-6.3-0.noarch.rpm \
   && yum install -y php-pecl-radius WANconsole socat \
   && yum clean all && rm -rf /var/cache/yum
 
-VOLUME ["/opt/andrisoft/etc/"]
+VOLUME ["/opt/andrisoft/etc/", "/opt/andrisoft/dumps/", "/opt/andrisoft/flows/"]
 
 RUN ln -s /opt/andrisoft/etc/andrisoft_apache.conf /etc/httpd/conf.d/andrisoft_apache.conf &> /dev/null
 
