@@ -18,7 +18,7 @@ https://www.andrisoft.com/software/wanguard
 docker run -d --name wanguard-mariadb \
   -e MYSQL_ROOT_PASSWORD=my-secret-pw \
   -v /my/own/datadir:/var/lib/mysql \
-  mariadb:latest --max-allowed-packet=64M --max-connections=1000 --open-files-limit=5000 --skip-name-resolve
+  mariadb:5 --max-allowed-packet=64M --max-connections=1000 --open-files-limit=5000 --skip-name-resolve
 
 docker run -d --name wanguard-console \
   --link wanguard-mariadb:mariadb \

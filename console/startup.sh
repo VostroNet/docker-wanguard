@@ -16,7 +16,7 @@ sed -i "s/^;date.timezone =$/date.timezone = \"${TZ//\//\\/}\"/" /etc/php.ini
 
 socat UNIX-LISTEN:/var/lib/mysql/mysql.sock,fork,reuseaddr,unlink-early,user=mysql,group=mysql,mode=777 "TCP:$mysqlhost:3306" &
 
-# /opt/andrisoft/bin/WANsupervisor &
+/opt/andrisoft/bin/WANsupervisor &
 
 rm -Rf /run/httpd/*
 # Apache gets grumpy about PID files pre-existing
